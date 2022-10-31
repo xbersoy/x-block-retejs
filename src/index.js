@@ -5,13 +5,8 @@ import { createEditor } from "./rete";
 import "./styles.css";
 
 function App() {
-  const functionName = () => {
-    // console.log(createEditor);
-  };
-
   return (
     <div className="App">
-      <button onClick={functionName}>Add a new block.</button>
       <div className="editor">
         <div className="container">
           <div
