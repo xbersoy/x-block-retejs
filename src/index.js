@@ -1,30 +1,31 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { createEditor } from "./rete";
+import { render } from "react-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import { deepPurple, teal } from "@material-ui/core/colors";
+import App from "./components/app";
 
-import "./styles.css";
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: deepPurple[400],
+      light: deepPurple[200],
+      dark: deepPurple[700]
+    },
+    secondary: {
+      main: teal.A400,
+      light: teal[200],
+      dark: teal[700]
+    },
+    type: "dark"
+  },
+  spacing: {
+    unit: 10
+  }
+});
 
-function App() {
-  const functionName = () => {
-    // console.log(createEditor);
-  };
-
-  return (
-    <div className="App">
-      <button onClick={functionName}>Add a new block.</button>
-      <div className="editor">
-        <div className="container">
-          <div
-            className="node-editor"
-            style={{ width: "100vw", height: "100vh" }}
-            ref={(ref) => ref && createEditor(ref)}
-          />
-        </div>
-        <div id="dock" className="dock"></div>
-      </div>
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+render(
+  <MuiThemeProvider theme={theme}>
+    <App />
+  </MuiThemeProvider>,
+  document.getElementById("root")
+);
