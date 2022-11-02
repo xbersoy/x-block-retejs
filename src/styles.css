@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -6,25 +10,93 @@
 .editor {
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
 }
 
 .dock {
-  height: auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
+  z-index: 10;
+  height: 100vh;
+  padding: 0 2px;
+  background-color: #323232;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .dock-item {
+  height: auto;
   display: inline-block;
+  margin: 0;
   vertical-align: top;
-  transform: scale(0.8);
-  transform-origin: 50% 0;
 }
 
 .container {
+  position: absolute;
   flex: 1;
   overflow: hidden;
+}
+
+
+.control input,
+.input-control input {
+  border-radius: 15px;
+  padding: 5px;
+}
+.dock-item .node .input,
+.dock-item .node .control,
+.dock-item .node .output {
+  display: none;
+}
+.dock-item .node {
+  padding: 0;
+  background-color: #323232 !important;
+  border-radius: 5px;
+  border: none;
+}
+.dock-item .node:hover {
+  background-color: #232323 !important;
+}
+.dock::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dock::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.dock::-webkit-scrollbar-thumb {
+  background: #232323;
+  border-radius: 10px;
+}
+
+.dock::-webkit-scrollbar-thumb:hover {
+  background: #131313;
+}
+.node {
+  background: rgb(50 50 50);
+  border: 2px solid #686868;
+  border-radius: 5px;
+}
+.node:hover {
+  background: #131313;
+}
+.socket {
+  border: 1px solid white;
+  background: #2181ff;
+}
+.node.selected {
+  background: #121212;
+  border-color: #131313;
+}
+.search,
+.item {
+  background: #323232 !important;
+  border-color: #131313 !important;
+}
+.search:hover,
+.item:hover {
+  background: #121212 !important;
 }
